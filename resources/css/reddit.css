@@ -12,3 +12,42 @@
 #subredditButton {
 	width: 120px;
 }
+
+.dataItem {
+	height: 80px;
+	border: solid grey 1px;
+	overflow: hidden;
+}
+
+.scoreBox, .button {
+	height: 60px;
+	width: 60px;
+	margin: 10px;
+}
+
+.scoreBox {
+	border-radius: 5px;
+}
+
+.icon {
+	background-image: url('../icons/arrow.png');
+	background-size: contain;
+	border-radius: 100%;
+}
+
+.score {
+	line-height: 20px;
+    font-size: 20px;
+    position: relative;
+    top: 20px;
+    text-align: center;
+    background: white;
+    opacity: .6;
+    border-radius: 5px;
+    display:inline-block;
+}
+
+.nsfw {
+	background-color: rgba(256,0,0,.1);
+	border: red solid 1px;
+}

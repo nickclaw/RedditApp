@@ -10,8 +10,8 @@ Ext.application({
     plugins: ['DataViewPaging'],
     models: ['Post'],
     stores: ['PostStore'],
-    views: ['Main'],
-    controllers: [],
+    views: ['Main', 'PostItem'],
+    controllers: ['PageControl'],
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
@@ -19,7 +19,10 @@ Ext.application({
 
         var main = Ext.create('RedditApp.view.Main');
 
+        var timePicker = Ext.create('RedditApp.view.TimePicker');
+        timePicker.hide();
+
         // Initialize the main view
-        Ext.Viewport.add(main);
+        Ext.Viewport.add(main, timePicker);
     }
 });

@@ -85,14 +85,22 @@ Ext.define('RedditApp.view.Main', {
 			},
 			{
 				xtype: 'dataview',
-				plugins: [
-					{
-						xclass: 'RedditApp.plugin.DataViewPaging'
-					}
-				],
-				store: 'PostStore',
-				id: 'posts',
-				itemTpl: '<div>{title}</div>'
+	            store: 'PostStore',
+	            useComponents: true,
+	            defaultType: 'postitem',
+	            id: 'list',
+	            plugins: [
+	            	{
+	            		xclass: 'RedditApp.plugin.DataViewPaging',
+	            		id: 'plugin'
+	            	}
+	            ],
+
+	         	listeners: {
+	         		nextpage: function() {
+	         			console.log('hey!');
+	         		}
+	         	}
 			}
 		]
 	}
