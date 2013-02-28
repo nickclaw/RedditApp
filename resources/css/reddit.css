@@ -1,0 +1,10 @@
+#logo {
+	height:40px;
+	width: 120px;
+	background-image:url(../icons/logo.png);
+	background-size:contain;
+}
+
+#logoText {
+	padding-top: 18%;
+}

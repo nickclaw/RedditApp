@@ -7,12 +7,19 @@ Ext.Loader.setPath({
 
 Ext.application({
     name: 'RedditApp',
+    plugins: ['DataViewPaging'],
+    models: ['Post'],
+    stores: ['PostStore'],
+    views: ['Main'],
+    controllers: [],
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
+        var main = Ext.create('RedditApp.view.Main');
+
         // Initialize the main view
-        Ext.Viewport.add();
+        Ext.Viewport.add(main);
     }
 });
