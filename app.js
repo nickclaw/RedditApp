@@ -10,8 +10,8 @@ Ext.application({
     plugins: ['DataViewPaging'],
     models: ['Post', 'Subreddit'],
     stores: ['PostStore', 'SubredditStore'],
-    views: ['Main', 'PostItem', 'TimePicker', 'SubredditList'],
-    controllers: ['PageControl'],
+    views: ['Main', 'PostItem', 'TimePicker', 'SubredditList', 'Settings', 'PostPanel'],
+    controllers: ['PageControl', 'PostControl', 'SettingsControl'],
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
@@ -25,7 +25,14 @@ Ext.application({
         var subredditList = Ext.create('RedditApp.view.SubredditList');
         subredditList.hide();
 
+        var settings = Ext.create('RedditApp.view.Settings');
+
+        var postPanel = Ext.create('RedditApp.view.PostPanel', {
+        	zIndex: 1000
+        });
+        postPanel.hide();
+
         // Initialize the main view
-        Ext.Viewport.add(main, timePicker, subredditList);
+        Ext.Viewport.add(main, timePicker, subredditList, settings, postPanel);
     }
 });

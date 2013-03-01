@@ -1,5 +1,6 @@
 Ext.define('RedditApp.view.PostItem', {
 	extend: 'Ext.dataview.component.DataItem',
+	requires: ['Ext.Img'],
 	xtype: 'postitem',
 
 	config: {

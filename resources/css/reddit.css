@@ -5,8 +5,13 @@
 	background-size:contain;
 }
 
-#logoText {
-	padding-top: 18%;
+#logoText, #hiddenLogoText {
+	padding-top: 22px;
+}
+
+#hiddenLogoText {
+	overflow: hidden;
+	height: 0px;
 }
 
 #subredditButton {
@@ -50,4 +55,9 @@
 .nsfw {
 	background-color: rgba(256,0,0,.1);
 	border: red solid 1px;
+}
+
+#postPanel {
+	width: 400px;
+	height: 400px;
 }

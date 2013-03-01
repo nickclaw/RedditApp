@@ -1,7 +1,7 @@
 Ext.define('RedditApp.view.Main', {
 	extend: 'Ext.Container',
-	xtype: 'main',
 	requires: ['Ext.Button', 'Ext.Toolbar', 'RedditApp.plugin.DataViewPaging', 'Ext.SegmentedButton', 'Ext.DataView'],
+	xtype: 'main',
 
 	config: {
 		fullscreen: true,
@@ -17,6 +17,11 @@ Ext.define('RedditApp.view.Main', {
 					centered: true,
 					layout: 'hbox',
 					items: [
+						{ // hidden subreddit text space to make logo centered
+							xtype: 'component',
+							html: '/',
+							id: 'hiddenLogoText',
+						},
 						{ // reddit logo image
 							xtype: 'component',
 							id: 'logo'

@@ -81,6 +81,8 @@ Ext.define('RedditApp.controller.PageControl', {
 	chooseSubreddit: function() {
 		this.getSubredditPanel().hide();
 		this.getSubredditButton().setText(this.getSubredditList().getSelection()[0].data.url);
+		Ext.getCmp('logoText').setHtml(this.getSubredditList().getSelection()[0].data.url);
+		Ext.getCmp('hiddenLogoText').setHtml(this.getSubredditList().getSelection()[0].data.url);
 		this.changeMainPage(this.getUrl(), false);
 	},
 

@@ -13,9 +13,11 @@ Ext.define('RedditApp.model.Post', {
 			{name: 'is_self', type: 'boolean'},
 			{name: 'name', type: 'string'},
 			{name: 'over_18', type: 'boolean'},
+			{name: 'permalink', type: 'string'},
 			{name: 'subreddit', type: 'string'},
 			{name: 'subreddit_id', type: 'string'},
 			{name: 'thumbnail', type: 'string'},
+			{name: 'selftext', type: 'string'},
 			{name: 'title', type: 'string'},
 			{name: 'url', type: 'string'},
 			{name: 'selftext', type: 'string'}
