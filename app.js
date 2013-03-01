@@ -8,9 +8,9 @@ Ext.Loader.setPath({
 Ext.application({
     name: 'RedditApp',
     plugins: ['DataViewPaging'],
-    models: ['Post'],
-    stores: ['PostStore'],
-    views: ['Main', 'PostItem'],
+    models: ['Post', 'Subreddit'],
+    stores: ['PostStore', 'SubredditStore'],
+    views: ['Main', 'PostItem', 'TimePicker', 'SubredditList'],
     controllers: ['PageControl'],
 
     launch: function() {
@@ -22,7 +22,10 @@ Ext.application({
         var timePicker = Ext.create('RedditApp.view.TimePicker');
         timePicker.hide();
 
+        var subredditList = Ext.create('RedditApp.view.SubredditList');
+        subredditList.hide();
+
         // Initialize the main view
-        Ext.Viewport.add(main, timePicker);
+        Ext.Viewport.add(main, timePicker, subredditList);
     }
 });

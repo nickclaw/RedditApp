@@ -4,6 +4,8 @@ Ext.define('RedditApp.view.TimePicker', {
 	config: {
 		id: 'timePicker',
 		useTitles: true,
+		modal: true,
+		hideMaskOnTap: true,
 
 		slots: [
 			{

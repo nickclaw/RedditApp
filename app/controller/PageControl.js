@@ -4,8 +4,14 @@ Ext.define('RedditApp.controller.PageControl', {
 	config: {
 		refs: {
 			subredditButton: '#subredditButton',
+			subredditPanel: '#subredditPanel',
+			subredditList: '#subredditList',
+
 			sortingButtons: '#sortingButtons',
+
 			timeButton: '#timeButton',
+			timePicker: '#timePicker',
+
 			refreshButton: '#refresh',
 
 			plugin: '#plugin'
@@ -15,11 +21,17 @@ Ext.define('RedditApp.controller.PageControl', {
 			subredditButton: {
 				tap: 'toggleSubreddit',
 			},
+			subredditList: {
+				select: 'chooseSubreddit'
+			},
 			sortingButtons: {
 				toggle: 'chooseSorting'
 			},
 			timeButton: {
 				tap :'toggleTime'
+			},
+			timePicker: {
+				change: 'chooseTime'
 			},
 			refreshButton: {
 				tap: 'refreshPage'
@@ -43,9 +55,16 @@ Ext.define('RedditApp.controller.PageControl', {
 
 	getUrl: function() {
 		var mainUrl = 'http://www.reddit.com';
+		list = this.getSubredditList();
 		var subreddit = '/';
+			if (this.getSubredditList().getSelection().length){
+				if (this.getSubredditList().getSelection()[0].data.url !== 'frontpage'){
+					subreddit = this.getSubredditList().getSelection()[0].data.url;
+				}
+			}
 		var sorting = this.getSortingButtons().getPressedButtons()[0].getText();
-		var time = 'all';
+		var time = this.getTimePicker().getValues()?this.getTimePicker().getValues().time:'';
+		me = this;
 
 		var url = mainUrl + subreddit + sorting + '/.json'
 		if (sorting === 'top' || sorting === 'controversial'){
@@ -56,6 +75,13 @@ Ext.define('RedditApp.controller.PageControl', {
 
 	toggleSubreddit: function() {
 		console.log('toggled subreddit panel');
+		this.getSubredditPanel().showBy(this.getSubredditButton());
+	},
+
+	chooseSubreddit: function() {
+		this.getSubredditPanel().hide();
+		this.getSubredditButton().setText(this.getSubredditList().getSelection()[0].data.url);
+		this.changeMainPage(this.getUrl(), false);
 	},
 
 	chooseSorting: function(segment, button, isPressed) {
@@ -75,6 +101,11 @@ Ext.define('RedditApp.controller.PageControl', {
 		timePicker = Ext.getCmp('timePicker');
 
 		timePicker.show();
+	},
+
+	chooseTime: function(me) {
+		me.hide();
+		this.changeMainPage(this.getUrl(), false);
 	},
 
 	refreshPage: function() {
