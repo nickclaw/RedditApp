@@ -6,6 +6,7 @@ Ext.define('RedditApp.controller.PageControl', {
 			subredditButton: '#subredditButton',
 			subredditPanel: '#subredditPanel',
 			subredditList: '#subredditList',
+			subredditSearch: '#subredditSearch',
 
 			sortingButtons: '#sortingButtons',
 
@@ -19,13 +20,16 @@ Ext.define('RedditApp.controller.PageControl', {
 
 		control: {
 			subredditButton: {
-				tap: 'toggleSubreddit',
+				tap: 'toggleSubreddit'
 			},
 			subredditList: {
 				select: 'chooseSubreddit'
 			},
 			sortingButtons: {
 				toggle: 'chooseSorting'
+			},
+			subredditSearch: {
+				keyup: 'searchSubreddit'
 			},
 			timeButton: {
 				tap :'toggleTime'
@@ -75,6 +79,8 @@ Ext.define('RedditApp.controller.PageControl', {
 
 	toggleSubreddit: function() {
 		console.log('toggled subreddit panel');
+		this.getSubredditSearch().setValue('');
+		this.searchSubreddit(this.getSubredditSearch());
 		this.getSubredditPanel().showBy(this.getSubredditButton());
 	},
 
@@ -114,6 +120,27 @@ Ext.define('RedditApp.controller.PageControl', {
 		this.changeMainPage(this.getUrl(), false);
 	},
 
+	searchSubreddit: function(field) {
+		var text = field.getValue();
+		if (text){
+			this.getSubredditList().setStore(Ext.StoreManager.get('AllSubredditStore'));
+			this.getSubredditList().getStore().clearFilter();
+
+			data = this.getSubredditList().getStore().getData().items;
+
+			if (data[0].data.title === 'redditNICK'){
+				data[0].data.url = '/r/' + text + '/';
+			}
+
+			if (text.indexOf('/') !== 0){
+				this.getSubredditList().getStore().filter('url', '/r/' + text);
+			} else {
+				this.getSubredditList().getStore().filter('url', text);
+			}
+		} else {
+			this.getSubredditList().setStore(Ext.StoreManager.get('SubredditStore'));
+		}
+	},
 
 	getNextPage: function(id) {
 		var url = Ext.StoreManager.get('PostStore').getProxy().getUrl();

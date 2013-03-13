@@ -7,16 +7,32 @@ Ext.define('RedditApp.view.SubredditList', {
 		height: '75%',
 		width: '60%',
 		modal: true,
+		layout: 'vbox',
 		hideOnMaskTap: true,
 
 		items: [
 			{
+				xtype: 'fieldset',
+				height: 60,
+				style: 'margin: 0px',
+				items: [
+					{
+						xtype: 'searchfield',
+						label: 'Search',
+						labelCls: 'x-button x-button-action x-sized',
+						name: 'subreddit',
+						id: 'subredditSearch',
+						height: '100%',
+					}
+				]
+			},
+			{
 				xtype: 'list',
-				height: '100%',
-				width: '100%',
+				flex: 1,
 				id: 'subredditList',
 				store: 'SubredditStore',
-				itemTpl: '{url}'
+				itemTpl: '{url}',
+				itemHeight: 65
 			}
 		]
 	}

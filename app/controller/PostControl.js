@@ -17,7 +17,6 @@ Ext.define('RedditApp.controller.PostControl', {
 	onPostSelect: function(data, button) {
 		console.log('hey!');
 		this.getPostPanel().load(data);
-		// Ext.Viewport.animateActiveItem(this.getPostPanel(), {type: 'slide', direction: 'up'});
 		this.getPostPanel().show();
 	}
 });

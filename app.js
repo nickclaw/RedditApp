@@ -9,7 +9,7 @@ Ext.application({
     name: 'RedditApp',
     plugins: ['DataViewPaging'],
     models: ['Post', 'Subreddit'],
-    stores: ['PostStore', 'SubredditStore'],
+    stores: ['PostStore', 'SubredditStore', 'AllSubredditStore'],
     views: ['Main', 'PostItem', 'TimePicker', 'SubredditList', 'Settings', 'PostPanel'],
     controllers: ['PageControl', 'PostControl', 'SettingsControl'],
 
@@ -33,6 +33,6 @@ Ext.application({
         postPanel.hide();
 
         // Initialize the main view
-        Ext.Viewport.add(main, timePicker, subredditList, settings, postPanel);
+        Ext.Viewport.add([main, timePicker, subredditList, settings, postPanel]);
     }
 });

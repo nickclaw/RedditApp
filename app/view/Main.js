@@ -12,6 +12,7 @@ Ext.define('RedditApp.view.Main', {
 			{ // top toolbar with logo
 				xtype: 'toolbar',
 				docked: 'top',
+				height: 65,
 				title: { // title in center of titlebar
 					xtype: 'container',
 					centered: true,
@@ -38,34 +39,40 @@ Ext.define('RedditApp.view.Main', {
 					xtype: 'button',
 					iconMask: 'true',
 					ui: 'action',
+					height: 45,
 				},
 				items: [
 					{ // refresh page button
 						iconCls: 'refresh',
 						id: 'refresh',
+						width: 45
 					},
 					{xtype: 'spacer'},
 					{ // settings button
 						iconCls: 'settings',
-						id: 'settings'
+						id: 'settings',
+						width: 45
 					}
 				]
 			},
 			{ // toolbar for subreddit, sorting, and time
 				xtype: 'toolbar',
 				docked: 'top',
+				height: 65,
 
 				items: [
 					{xtype: 'spacer'},
 					{ // button to press to open list of subreddits
 						xtype: 'button',
 						id: 'subredditButton',
-						text: 'frontpage'
+						text: 'frontpage',
+						height: 45
 					},
 					{ // segmented buttons to choose sorting
 						xtype: 'segmentedbutton',
 						id: 'sortingButtons',
 						allowMultiple: false,
+						height: 45,
 
 						items: [
 							{
@@ -83,7 +90,8 @@ Ext.define('RedditApp.view.Main', {
 						id: 'timeButton',
 						iconCls: 'time',
 						iconMask: true,
-						disabled: true
+						disabled: true,
+						height: 45
 					},
 					{xtype: 'spacer'}
 				]

@@ -10,6 +10,7 @@ Ext.define('RedditApp.view.Settings', {
             {
                 xtype: 'toolbar',
                 docked: 'bottom',
+                height: 65,
                 items: [
                     {
                     	xtype: 'button',

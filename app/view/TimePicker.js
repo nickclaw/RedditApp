@@ -11,6 +11,7 @@ Ext.define('RedditApp.view.TimePicker', {
 			{
 				name: 'time',
 				title: 'Time',
+				itemHeight: 65,
 				
 				data: [
 					{text: 'this hour', value: 'hour'},

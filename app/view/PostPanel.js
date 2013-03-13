@@ -13,56 +13,21 @@ Ext.define('RedditApp.view.PostPanel', {
 				width: '100%',
 				height: '100%',
 				layout: 'vbox',
-				items: [
-					{
-						xtype: 'container',
-						layout: 'hbox',
-						flex: 1,
-						items: [
-							{
-								xtype: 'image',
-								flex: 1,
-								id: 'postPanelThumb',
-							},
-							{
-								xtype: 'component',
-								flex: 2,
-								id: 'postPanelTitle'
-							}
-						]
-					},
-					{
-						xtype: 'container',
-						layout: 'hbox',
-						flex: 2,
-						items: [
-							{
-								xtype: 'component',
-								flex: 1,
-								style: 'background:red;'
-							},
-							{
-								xtype: 'component',
-								flex: 2,
-								style: 'background: blue;'
-							}
-						]
-					}
-				]
+				id: 'postPanelMain',
+				style: 'overflow:scroll'
 			}
 		]
 	},
 
 	load: function(data) {
-		d = data;
-		if (data.thumbnail === '' || data.thumbnail === 'self'){
-			data.thumbnail = 'resources/icons/nothumb.png'
+		var url = data.url;
+		var a = Ext.getCmp('postPanel').parent.element.getHeight();
+			console.log(a);
+		if (url.lastIndexOf('.gif') > 0 || url.lastIndexOf('.jpg') > 0 ||
+			url.lastIndexOf('.png') > 0 || url.lastIndexOf('.jpeg') > 0){
+			Ext.getCmp('postPanelMain').setHtml("<div style='width:100%;height:" + a + "px;background-image:url(" + url + ");background-size:contain;background-repeat:no-repeat;background-position:50% 50%;'></div>");
+		} else {
+			Ext.getCmp('postPanelMain').setHtml("<iframe src='" + url + "' style='width:100%;height:100%;'></iframe>");
 		}
-		if (data.over_18){
-			data.thumbnail = 'resources/icons/nsfwthumb.png'
-		}
-		Ext.getCmp('postPanelThumb').setSrc(data.thumbnail);
-		Ext.getCmp('postPanelTitle').setHtml(data.title);
-
 	}
 });
