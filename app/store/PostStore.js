@@ -11,6 +11,13 @@ Ext.define('RedditApp.store.PostStore', {
 			url: 'http://www.reddit.com/.json',
 			callbackKey: 'jsonp',
 
+			listeners: {
+					exception: function(me, response, operation) {
+						console.log('PROXY Exception');
+						Ext.getStore('PostStore').clearData();
+					}
+			},
+
 			reader: {
 				type: 'json',
 				rootProperty: 'data.children',

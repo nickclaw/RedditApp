@@ -68,7 +68,6 @@ Ext.define('RedditApp.controller.PageControl', {
 			}
 		var sorting = this.getSortingButtons().getPressedButtons()[0].getText();
 		var time = this.getTimePicker().getValues()?this.getTimePicker().getValues().time:'';
-		me = this;
 
 		var url = mainUrl + subreddit + sorting + '/.json'
 		if (sorting === 'top' || sorting === 'controversial'){
@@ -79,6 +78,7 @@ Ext.define('RedditApp.controller.PageControl', {
 
 	toggleSubreddit: function() {
 		console.log('toggled subreddit panel');
+		this.getSubredditList().deselectAll();
 		this.getSubredditSearch().setValue('');
 		this.searchSubreddit(this.getSubredditSearch());
 		this.getSubredditPanel().showBy(this.getSubredditButton());

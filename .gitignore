@@ -1,3 +1,5 @@
 .sencha
 touch
 *.DS_Store
+build
+resources/sass/.sass-cache

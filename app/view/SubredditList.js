@@ -18,8 +18,6 @@ Ext.define('RedditApp.view.SubredditList', {
 				items: [
 					{
 						xtype: 'searchfield',
-						label: 'Search',
-						labelCls: 'x-button x-button-action x-sized',
 						name: 'subreddit',
 						id: 'subredditSearch',
 						height: '100%',
