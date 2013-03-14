@@ -19,8 +19,8 @@ Ext.define('RedditApp.view.PostPanel', {
 		]
 	},
 
-	load: function(data) {
-		var url = data.url;
+	load: function(data, permalink) {
+		var url = permalink?'http://www.reddit.com' + data.permalink:data.url;
 		var a = Ext.getCmp('postPanel').parent.element.getHeight();
 			console.log(a);
 		if (url.lastIndexOf('.gif') > 0 || url.lastIndexOf('.jpg') > 0 ||

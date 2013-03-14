@@ -4,19 +4,25 @@ Ext.define('RedditApp.controller.PostControl', {
 	config: {
 		refs: {
 			pageList: '#list',
-			postPanel: '#postPanel'
+			postPanel: '#postPanel',
 		},
 
 		control: {
 			pageList: {
-				postselect: 'onPostSelect'
+				postselect: 'onPostSelect',
+				imageselect: 'onImageSelect'
 			}
 		}
 	},
 
 	onPostSelect: function(data, button) {
+		this.getPostPanel().load(data, false);
+		this.getPostPanel().show();
+	},
+
+	onImageSelect: function(data, image) {
 		console.log('hey!');
-		this.getPostPanel().load(data);
+		this.getPostPanel().load(data, true)
 		this.getPostPanel().show();
 	}
 });

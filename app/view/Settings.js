@@ -47,15 +47,16 @@ Ext.define('RedditApp.view.Settings', {
                                 items: [
                                     {
                                         xtype: 'textfield',
-                                        name: 'username',
+                                        name: 'user',
                                         label: 'Username',
-                                        required: 'true'
+                                        required: 'true',
+                                        value: 'illucidation'
                                     },
                                     {
                                         xtype: 'passwordfield',
-                                        name: 'password',
+                                        name: 'passwd',
                                         label: 'Password',
-                                        required: 'true'
+                                        required: 'true',
                                     },
                                     {
                                         xtype: 'checkboxfield',

@@ -38,6 +38,28 @@ Ext.define('RedditApp.controller.SettingsControl', {
 		} else {
 			Ext.StoreManager.get('PostStore').clearFilter();
 		}
+
+		if (this.getLogin().getValues().user && this.getLogin().getValues().passwd){
+			console.log('sending get request');
+			var param = this.getLogin().getValues();
+			param.api_type = 'json';
+			console.log(param);
+
+			a = Ext.Ajax.request({
+				url: 'https://ssl.reddit.com/api/login',
+				method: 'POST',
+
+				params: param,
+				useDefaultXhrHeader: false,
+				// headers: {
+				// 	'User-Agent' : '/u/illucidations practice application'
+				// },
+
+				success: function(response){
+					console.log(response);
+				}
+			});
+		}
 		this.hideSettings()
 	}
 });
