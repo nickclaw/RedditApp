@@ -3,8 +3,8 @@ Ext.define('RedditApp.controller.PostControl', {
 
 	config: {
 		refs: {
-			pageList: '#list',
-			postPanel: '#postPanel',
+			pageList: '#list',			// datalist of all the posts
+			postPanel: '#postPanel',	// the panel that displays posts once opened
 		},
 
 		control: {
@@ -15,13 +15,20 @@ Ext.define('RedditApp.controller.PostControl', {
 		}
 	},
 
-	onPostSelect: function(data, button) {
+	/**
+	 * called when button is tapped
+	 * @param is all the posts data
+	**/
+	onPostSelect: function(data) {
 		this.getPostPanel().load(data, false);
 		this.getPostPanel().show();
 	},
 
-	onImageSelect: function(data, image) {
-		console.log('hey!');
+	/**
+	 * called when thumbnail is tapped
+	 * @param data is all the posts data
+	**/
+	onImageSelect: function(data) {
 		this.getPostPanel().load(data, true)
 		this.getPostPanel().show();
 	}

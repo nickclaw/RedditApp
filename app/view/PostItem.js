@@ -6,7 +6,6 @@ Ext.define('RedditApp.view.PostItem', {
 	config: {
 		cls: 'dataItem',
 		style: '',
-		bubbleEvents: ['postselect', 'imageselect'],
 		image: {
 			cls: 'scoreBox',
 			html: ''
@@ -69,8 +68,7 @@ Ext.define('RedditApp.view.PostItem', {
 
 	updateImage: function(newImage, oldImage) {
 		if (newImage) {
-			newImage.on('tap', this.onImageTap, this);
-			this.add(newImage);
+ 			this.add(newImage);
 		}
 
 		if (oldImage) {
@@ -97,19 +95,10 @@ Ext.define('RedditApp.view.PostItem', {
 
 	updateArrow: function(newArrow, oldArrow) {
 		if (newArrow) {
-			newArrow.on('tap', this.onButtonTap, this);
 			this.add(newArrow);
 		}
 		if (oldArrow) {
 			this.remove(oldArrow);
 		}
-	},
-	onButtonTap: function(button, e) {
-		var data = this.getRecord().data;
-		this.fireEvent('postselect', data, this);
-	},
-	onImageTap: function(button, e) {
-		var data = this.getRecord().data;
-		this.fireEvent('imageselect', data, this);
 	}
 });

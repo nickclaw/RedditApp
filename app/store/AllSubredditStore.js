@@ -6,7 +6,7 @@ Ext.define('RedditApp.store.AllSubredditStore', {
 		model: 'RedditApp.model.Subreddit',
 		autoLoad: {addRecords: true},
 		pageSize: 100,
-
+		count: 200,
 		proxy: {
 			type: 'jsonp',
 			url: 'http://www.reddit.com/reddits/popular/.json',
@@ -51,10 +51,8 @@ Ext.define('RedditApp.store.AllSubredditStore', {
 			},
 
 			load: function(me, records) {
-				console.log(records);
-				if (me.getAllCount() < 300) {
+				if (me.getAllCount() < this.getCount()) {
 					this.getProxy().setUrl('http://www.reddit.com/reddits/popular/.json?after=' + records[records.length-1].data.name);
-					console.log("loading more..." + this.getProxy().getUrl());
 					this.load({addRecords: true});
 				}
 			}

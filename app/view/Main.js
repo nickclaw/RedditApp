@@ -110,8 +110,17 @@ Ext.define('RedditApp.view.Main', {
 	            ],
 
 	         	listeners: {
-	         		nextpage: function() {
-	         			console.log('hey!');
+	         		tap: {
+	         			fn: function(me,target){
+	         				var validTap = 	Ext.get(target).up('.button') || Ext.get(target).up('.scoreBox') || (target.classList.contains('button')?Ext.get(target):false);
+	         				
+	         				if(validTap){
+	         					var bullet = validTap.hasCls('button')?'postselect':'imageselect';
+		         				item = Ext.getCmp(Ext.get(target).up('.x-data-item').id);
+		         				Ext.getCmp('list').fireEvent(bullet, item.getRecord().data);
+		         			}
+	         			},
+	         			element: 'innerElement',
 	         		}
 	         	}
 			}

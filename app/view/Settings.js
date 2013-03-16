@@ -86,6 +86,21 @@ Ext.define('RedditApp.view.Settings', {
                                         name: 'nsfw',
                                         label: 'Show Nsfw?',
                                         checked: 'true'
+                                    },
+                                    {
+                                        xtype: 'sliderfield',
+                                        name: 'subreddits',
+                                        label: 'Load 100 Subreddits?',
+                                        value: 100,
+                                        maxValue: 500,
+                                        minValue: 0,
+                                        increment: 100,
+
+                                        listeners: {
+                                            change: function(a,b,c,d,e){
+                                                this.setLabel('Load ' + d + ' Subreddits?')
+                                            }
+                                        }
                                     }
                                 ]
                             }
